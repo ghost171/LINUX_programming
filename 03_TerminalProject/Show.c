@@ -21,79 +21,69 @@ int main(int argc, char **argv) {
     setlocale(LC_ALL, "");
 
     initscr();
-    noecho();
-    cbreak();
-    printw("This program prints name and content of the file:");
+    curs_set(0);
+    noecho();   
+    win = newwin(LINES-2*DX, COLS-2*DX, DX, DX);
+    keypad(stdscr, TRUE);
+    scrollok (win, FALSE);
+
+    /*int countofRows = 0;
+    countofRows++;
+    box(win, 0, 0);
+    move(countofRows, 0);
+    printw("Name of the file: %s", nameOfTheFile);
+    countofRows++;
+    move(countofRows, 0);
+    printw("Content of the file: ");
+    countofRows++;*/
+    move(0, 0);
+    printw("Name of the file: %s", nameOfTheFile);
     refresh();
 
-    win = newwin(LINES-2*DX, COLS-2*DX, DX, DX);
-    keypad(win, TRUE);
-    scrollok(win, TRUE);
-    char letter = 'c';
-    int i = 0;
-    curs_set(0);
-
-    /*wmove(win, 1, 1);
-    int countofRows = 0;
-    countofRows++;
-    wmove(win, countofRows, 1);
-    wprintw(win, "Name of the file: %s", nameOfTheFile);
-    countofRows++;
-    wmove(win, countofRows, 1);
-    wprintw(win, "Content of the file: ");
-    countofRows++;
-    wmove(win, countofRows, 1);
-    int lengthOfRow;*/
-
-    int countOfBackspace = 0;
-
-    char *readLine;
     size_t streamsize;
-    char **content = NULL;
-    int index = 0;
-    while(getline(&readLine, &streamsize, contentOfTheFile) != EOF ) {
-        content = (char **)realloc(content, (index + 1) * sizeof(char *));
-        printf("                %s", readLine);
-        content[index] = readLine;
-        index++;
-        readLine = NULL;
+    int countofRows = 0;
+    char **content = (char **)malloc(sizeof(char *));
+    content[0] = "Content of the file: ";
+    char* lineRead = NULL;
+    while (getline(&lineRead, &streamsize, contentOfTheFile) != -1) {
+        content = (char**)realloc(content, (countofRows + 1) * sizeof(char *));
+        content[countofRows] = lineRead;
+        countofRows++;
+        lineRead = NULL;
     }
 
-    bool mustExit = 0;
-    int row = 0;
-    /*while (!mustExit) {
+    bool mustExit = FALSE;
+    int currentRow = 0;
+    int key_in = 0;
+    while (key_in != 27) {
+        werase(win);
         wmove(win, 1, 0);
 
-        for (int i = 0; row + i < index && i < 1448; i++ ) {
+        for (int i = 0; ((currentRow + i) < countofRows) && (i < 1000); i++ ) {
             wmove(win, i + 1, 0);
-            wprintw(win, "%4d: ", row + i);
-            waddstr(win, content[row + i]);
+            wprintw(win, "%4d: ", currentRow + i);
+            for (int j = 0; j < 190; j++) {
+                wprintw(win, "%c", content[currentRow + i][j]);
+            }
         }
 
         box(win, 0, 0);
         wrefresh(win);
-        int input = getch();
-        switch(input) {
-            case ' ':
-            case KEY_DOWN:
-                if (row + 1 < countofRows) {
-                    row++;
-                }
-                break;
-            case KEY_UP:
-                if (row > 0) {
-                    row--;
-                }
-                break;
-            case 27:
-                mustExit = 1;
-                break;
-            default:
-                break;
-
+        key_in = getch();
+        if (key_in == ' ') {
+            if (currentRow + 1 < countofRows) {
+                currentRow++;
+            }
+        } else if (key_in == KEY_DOWN) {
+            if (currentRow + 1 < countofRows) {
+                currentRow++;
+            }
+        } else if (key_in == KEY_UP) {
+            if (currentRow > 0) {
+                currentRow--;
+            }
         }
-
-    } */
+    } 
 
     fclose(contentOfTheFile);
     endwin();
