@@ -1,4 +1,4 @@
-GENERATES = prog README	output1.txt	output2.txt	output3.txt
+GENERATES = prog README	output1.txt	output2.txt	output3.txt	prog-a	prog-so
 TRASH = *.o *~ o.*
 
 
@@ -18,7 +18,7 @@ TARGET_BIN_1	=	prog-a
 TARGET_BIN_2	=	prog-so
 
 
-all:	prog	$(TARGET)	$(TARGET_2)	$(TARGET_BIN_1)	$(TARGET_BIN_2)	test	clean
+all:	prog	$(TARGET)	$(TARGET_2)	$(TARGET_BIN_1)	$(TARGET_BIN_2)	test	clean	distclean
 
 prog:	const.o	fun.o	prog.o
 	$(CC)	$^	-o	$@
