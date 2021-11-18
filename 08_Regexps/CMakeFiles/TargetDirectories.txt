@@ -1,0 +1,5 @@
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/CMakeFiles/rebuild_cache.dir
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/CMakeFiles/main.dir
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/CMakeFiles/edit_cache.dir
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/CMakeFiles/test.dir
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/CMakeFiles/replace.dir

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/replace.c
+stdio.h
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/stdio.h
+stdlib.h
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/stdlib.h
+string.h
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/string.h
+regex.h
+/home/ghost17/LINUX_programming/LINUX_programming/08_Regexps/regex.h
+

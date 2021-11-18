@@ -1,0 +1,1 @@
+int RegexReplaceOnce(char **str, const char *pattern, const char *replace);

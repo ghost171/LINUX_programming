@@ -1,0 +1,2 @@
+/usr/bin/ar qc libreplace.a  CMakeFiles/replace.dir/replace.c.o
+/usr/bin/ranlib libreplace.a
