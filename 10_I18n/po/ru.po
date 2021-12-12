@@ -1,5 +1,7 @@
-"Project-Id-Version:  10_I18n\n"
-"Report-Msgid-Bugs-To: \n"
+msgid ""
+msgstr ""
+"Project-Id-Version:0.0\n"
+"Report-Msgid-Bugs-To: ghost17@ghost17-Lenovo-Legion-Y530-15ICH\n"
 "POT-Creation-Date: 2021-12-05 18:33+0300\n"
 "PO-Revision-Date: 2021-12-05 18:50+0300\n"
 "Last-Translator: Tiwali <tiwali@tiwali-virtualbox>\n"
@@ -35,5 +37,5 @@ msgstr ""
 
 #: guess.c:41
 #, c-format
-msgid ""I guessed! Your number is %d"
+msgid "I guessed! Your number is %d"
 msgstr "Я догадался! Ваше число - %d"
